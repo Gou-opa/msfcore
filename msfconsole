@@ -4,11 +4,17 @@
 # This user interface provides users with a command console interface to the
 # framework.
 ################################################
-# day la file dc chay
+# day la file dc chay thuc su
 ################################################
 #
 # Standard Library
 #
+################################################đoạn track file
+puts "####################bat dau doan in ra####################"
+puts "tu file" + __FILE__
+puts "####################ket thuc doan in ra####################"
+###########################################################
+
 
 require 'pathname'
 
@@ -43,13 +49,24 @@ end
 #
 
 # @see https://github.com/rails/rails/blob/v3.2.17/railties/lib/rails/generators/rails/app/templates/script/rails#L3-L5
-require Pathname.new(__FILE__).realpath.expand_path.parent.join('config', 'boot')
-###########################
-puts "day la file require dau tien"
+
+################################################đoạn track file
+puts "####################bat dau doan in ra####################"
+puts "tu file" + __FILE__ + "\nrequire:\nfile dat tai "
 puts Pathname.new(__FILE__).realpath.expand_path.parent.join('config', 'boot')
-puts "file nay ko dc chay, chi de import lay ham"
-########################### cac thu mucj tiep theo day o trong thu muc ./lib/
+puts "day la file require dau tien, de load cac gem len"
+require Pathname.new(__FILE__).realpath.expand_path.parent.join('config', 'boot')
+puts "."  ########################### cac thu mucj tiep theo day o trong thu muc ./lib/
+puts 'metasploit/framework/command/console'
 require 'metasploit/framework/command/console'
+puts "."
+puts 'msf/core/payload_generator'
 require 'msf/core/payload_generator'
-########################### hamf start nam trong file console, require thu nhat
+puts "####################ket thuc doan in ra####################"
+###########################################################
+
+
+
+
+########################### hamf start nam trong file console, tu require thu nhat
 Metasploit::Framework::Command::Console.start

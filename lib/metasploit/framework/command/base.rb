@@ -1,7 +1,10 @@
 #
 # Gems
 #
-
+###########################################################
+puts "loi chao tu file duoc require"
+puts "base"
+###########################################################
 require 'active_support/core_ext/module/introspection'
 
 #

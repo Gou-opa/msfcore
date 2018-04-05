@@ -45,7 +45,7 @@ class Driver < Msf::Ui::Driver
   #
   include Rex::Ui::Text::DispatcherShell
 
-  #
+  #####################################bien opts cho ta dieu khien cac option dau vao, nhu tat banner,....
   # Initializes a console driver instance with the supplied prompt string and
   # prompt character.  The optional hash can take extra values that will
   # serve to initialize the console driver.
@@ -533,7 +533,7 @@ class Driver < Msf::Ui::Driver
   # displayed, scripts can be processed, and other fun can be had.
   #
   def on_startup(opts = {})
-    # Check for modules that failed to load
+=begin    # Check for modules that failed to load
     if framework.modules.module_load_error_by_path.length > 0
       print_error("WARNING! The following modules could not be loaded!")
 
@@ -548,6 +548,8 @@ class Driver < Msf::Ui::Driver
         print_warning("\t#{path}: #{error}")
       end
     end
+=end
+
 
     framework.events.on_ui_start(Msf::Framework::Revision)
 
@@ -556,7 +558,7 @@ class Driver < Msf::Ui::Driver
       $stderr.print "\r" + (" " * 50) + "\n"
     end
 
-    run_single("banner") unless opts['DisableBanner']
+    #run_single("banner") unless opts['DisableBanner']
 
     opts["Plugins"].each do |plug|
       run_single("load '#{plug}'")

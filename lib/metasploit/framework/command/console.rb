@@ -2,12 +2,19 @@
 # Project
 #
 ######################################
-puts "day la file dc require thu 2"
-puts __FILE__
-puts "het comment"
+puts "loi chao tu file console.rb"
+puts "trong nay co chua lenh Start"
 #######################################
-require 'metasploit/framework/command'
+
+################################################đoạn track file
+puts "####################bat dau doan in ra####################"
+puts "tu file" + __FILE__ + "\nrequire:\nfile dat tai "
+puts 'metasploit/framework/command'
+require 'metasploit/framework/command'     ##da doc xong, goi toi gem activesupport de lm gi day can thiet
+puts 'metasploit/framework/command/base'
 require 'metasploit/framework/command/base'
+puts "####################ket thuc doan in ra####################"
+###########################################################
 
 # Based on pattern used for lib/rails/commands in the railties gem.
 class Metasploit::Framework::Command::Console < Metasploit::Framework::Command::Base
@@ -18,11 +25,13 @@ class Metasploit::Framework::Command::Console < Metasploit::Framework::Command::
   # Windows instances, which is why Windows platforms
   # should simply return immediately.
 
+=begin  ###############comment toan bo de bo di spinner
+
   def spinner
-#neu la windows thi ko spinner
+#########################################################neu la windows thi ko spinner
     return if Rex::Compat.is_windows
     return if Rex::Compat.is_cygwin
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>tiep tuc cong viec tai day
+
     return if $msf_spinner_thread
     $msf_spinner_thread = Thread.new do
       base_line = "[*] Starting the Metasploit Framework console..."
@@ -44,10 +53,13 @@ class Metasploit::Framework::Command::Console < Metasploit::Framework::Command::
       end
     end
   end
-############################################
+
+=end
+
+################################################################
 #chuong trinh bat dau goi tai day
-#############################################
-  def start
+################################################################
+  def start #######################################goi ham spinner
 ####lenh case dung nhu switch case
 puts "##################can tim hieu bien nay:parsed_options.options.subcommand ||||| va bien nay: parsed_options.options.console.quiet ################"
 ########### 
@@ -55,8 +67,8 @@ puts "##################can tim hieu bien nay:parsed_options.options.subcommand 
     when :version
       $stderr.puts "Framework Version: #{Metasploit::Framework::VERSION}"
     else
-      spinner unless parsed_options.options.console.quiet
-      driver.run
+      #spinner unless parsed_options.options.console.quiet
+      driver.run ##################day la phan chinh
     end
   end
 
@@ -68,7 +80,14 @@ puts "##################can tim hieu bien nay:parsed_options.options.subcommand 
   def driver
     unless @driver
       # require here so minimum loading is done before {start} is called.
+
+################################################đoạn track file
+puts "####################bat dau doan in ra####################"
+puts "tu file" + __FILE__ + "\nrequire:\nfile dat tai "
+puts	'msf/ui'
       require 'msf/ui'
+puts "####################ket thuc doan in ra####################"
+###########################################################
 
       @driver = Msf::Ui::Console::Driver.new(
           Msf::Ui::Console::Driver::DefaultPrompt,

@@ -1,7 +1,11 @@
 #
 # Gems
 #
-
+###########################################################
+puts "loi chao tu file command.rb"
+puts "file ay require gem autoload va thuc thi 2 lenh autoload :Base va autoload :Console"
+puts "file da xong khong doc nua"
+###########################################################
 # have to be exact so minimum is loaded prior to parsing arguments which could
 # influence loading.
 require 'active_support/dependencies/autoload'

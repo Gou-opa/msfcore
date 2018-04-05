@@ -1,10 +1,9 @@
 require 'pathname'
 require 'rubygems'
 
-###################################
-#day la file require thu nhat
-puts "loi chao tu file import thu nhat"
-#file nay chi import ko dc chay
+######################################
+puts "loi chao tu file duoc require thu nhat"
+puts "install cac gems len va bao loi neu ko co"
 ######################################
 
 GEMFILE_EXTENSIONS = [
@@ -35,7 +34,7 @@ rescue LoadError
   $stderr.puts "    $ gem install bundler"
   exit(1)
 end
-
+###########################moi thu se duoc su dung trong thu muc lib
 lib_path = root.join('lib').to_path
 
 unless $LOAD_PATH.include? lib_path
