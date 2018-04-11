@@ -20,7 +20,7 @@ begin
     #
     def initialize(tab_complete_proc = nil)
       if(not Object.const_defined?('Readline'))
-        require 'readline'
+        require 'readline'   ####lay tu file nao ????, co 4 kqua + 1 cai la chinh no
       end
 
       self.extend(::Readline)

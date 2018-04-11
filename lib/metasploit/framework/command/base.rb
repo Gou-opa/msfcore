@@ -6,6 +6,7 @@ puts "loi chao tu file duoc require"
 puts "base"
 ###########################################################
 require 'active_support/core_ext/module/introspection'
+#####################file nay o ngoai cho gems/activesupport-x.x.x/....
 
 #
 # Project

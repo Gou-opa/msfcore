@@ -19,6 +19,9 @@ require 'rex/ui/text/irb_shell'
 require 'rex/ui/text/bidirectional_pipe'
 
 require 'rex/text/color'
+######################################################
+puts "#day la doan in ra tu rex/ui.rb require toi file table.rb#"
+######################################################
 require 'rex/text/table'
 
 # Ui subscriber

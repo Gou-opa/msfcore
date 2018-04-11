@@ -28,7 +28,7 @@ unless ENV['BUNDLE_GEMFILE']
 end
 
 begin
-  require 'bundler/setup'
+  require 'bundler/setup'   ########## nam o /opt/metasploit/ruby.....bundler/setup.rb###########
 rescue LoadError
   $stderr.puts "[*] Metasploit requires the Bundler gem to be installed"
   $stderr.puts "    $ gem install bundler"

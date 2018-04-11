@@ -1,5 +1,7 @@
 # -*- coding: binary -*-
-
+############
+puts "co phai table.rb nay ko "+ __FILE__
+##############
 module Msf
 module Ui
 module Console
