@@ -1,6 +1,8 @@
 # -*- coding: binary -*-
 module Msf
-
+#########################
+puts 'lenh run nam o day '+__FILE__
+########################
 ###
 #
 # This module provides methods for time-limited modules

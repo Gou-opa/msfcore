@@ -1,6 +1,8 @@
 # -*- coding: binary -*-
 require 'rex/ui'
-
+###########################################
+puts "loi chao tu file readline "+ __FILE__
+###########################################
 module Rex
 module Ui
 module Text

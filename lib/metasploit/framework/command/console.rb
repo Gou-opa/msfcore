@@ -69,6 +69,7 @@ puts "##################can tim hieu bien nay:parsed_options.options.subcommand 
     else
       #spinner unless parsed_options.options.console.quiet
       driver.run ##################day la phan chinh
+#lenh run nay nam trong file lib/msf/core/auxiliary/timed.rb
     end
   end
 
@@ -102,7 +103,13 @@ puts "####################ket thuc doan in ra####################"
   def driver_options
     unless @driver_options
       options = parsed_options.options
-
+##################################################3
+	puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<day la class cua parsed_options"
+	puts parsed_options.class
+	a = parsed_options.options.source_location
+#khong in ra gi
+#theo rapid7 not rubydoc thi file nay dat trong lib/metasploit/framework/parsed_options/console.rb#dung nhu ten class = ten file
+####################################################
       driver_options = {}
       driver_options['Config'] = options.framework.config
       driver_options['ConfirmExit'] = options.console.confirm_exit
@@ -119,7 +126,7 @@ puts "####################ket thuc doan in ra####################"
       driver_options['RealReadline'] = options.console.real_readline
       driver_options['Resource'] = options.console.resources
       driver_options['XCommands'] = options.console.commands
-
+#########################nap cac thong tin tu parsed option vao driver option de chay
       @driver_options = driver_options
     end
 

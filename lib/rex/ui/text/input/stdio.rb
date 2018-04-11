@@ -14,7 +14,8 @@ class Input::Stdio < Rex::Ui::Text::Input
 
   #
   # Reads text from standard input.
-  #
+  #$stdin la bien global la tat ca nhung gi nhap vao
+
   def sysread(len = 1)
     $stdin.sysread(len)
   end

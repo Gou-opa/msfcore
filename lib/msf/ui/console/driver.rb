@@ -45,7 +45,7 @@ class Driver < Msf::Ui::Driver
   #
   include Rex::Ui::Text::DispatcherShell
 
-  #####################################bien opts cho ta dieu khien cac option dau vao, nhu tat banner,....
+  
   # Initializes a console driver instance with the supplied prompt string and
   # prompt character.  The optional hash can take extra values that will
   # serve to initialize the console driver.
@@ -62,15 +62,15 @@ class Driver < Msf::Ui::Driver
   #   directory}
   # @option opts [Boolean] 'SkipDatabaseInit' (false) Whether to skip
   #   connecting to the database and running migrations
-  def initialize(prompt = DefaultPrompt, prompt_char = DefaultPromptChar, opts = {})
+  def initialize(prompt = DefaultPrompt, prompt_char = DefaultPromptChar, opts = {}) #####################################bien opts cho ta dieu khien cac option dau vao, moi thu nhu in file ra dau, thoat hay chua, dia chi cua database,....
     choose_readline(opts)
-
+#chon trinh readline de doc noi dung cua opts
     histfile = opts['HistFile'] || Msf::Config.history_file
-
+#lay dia chi cua file history 
     # Initialize attributes
 
     # Defer loading of modules until paths from opts can be added below
-    framework_create_options = opts.merge('DeferModuleLoads' => true)
+    framework_create_options = opts.merge('DeferModuleLoads' => true) #bat dau tri hoanx
     self.framework = opts['Framework'] || Msf::Simple::Framework.create(framework_create_options)
 
     if self.framework.datastore['Prompt']
@@ -79,6 +79,7 @@ class Driver < Msf::Ui::Driver
     end
 
     # Call the parent
+#parent lam gi co gi  :))))  ham super cua initialize la def initialize end  :)))
     super(prompt, prompt_char, histfile, framework)
 
     # Temporarily disable output
@@ -90,7 +91,10 @@ class Driver < Msf::Ui::Driver
     # Initialize the user interface to use a different input and output
     # handle if one is supplied
     input = opts['LocalInput']
-    input ||= Rex::Ui::Text::Input::Stdio.new
+###############cau duoi input ||= ... neu cau tren opts[] => false or nil thi no se gan input = cau duoi, ko thi giu nguyen cau tren
+puts "vao file driver.rb>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    input ||= Rex::Ui::Text::Input::Stdio.new ##############tao doi tuong cho dau vao stdio
+#################o ben file rex/ui/text/input/stdio.rb
 
     if (opts['LocalOutput'])
       if (opts['LocalOutput'].kind_of?(String))
@@ -364,7 +368,8 @@ class Driver < Msf::Ui::Driver
       return
     end
 
-    if (conf.group?(ConfigCore))
+    if (conf.group?(ConfigCore))    #configcore = 'framework/core'
+#lenh group tuong duong voi cau truy van sql SELECT object.* FROM object GROUP BY configcore
       conf[ConfigCore].each_pair { |k, v|
         on_variable_set(true, k, v)
       }
@@ -574,10 +579,11 @@ class Driver < Msf::Ui::Driver
   # that the variable is not being set to a valid value.
   #
   def on_variable_set(glob, var, val)
-    case var.downcase
+    case var.downcase		#dong bo ky tu
       when "payload"
 
         if (framework and framework.payloads.valid?(val) == false)
+	#kiem tra thanh phan framework trong doi tuong options. trong file console.rb va file base.rb trong thu muc metasploit/framework/parsed_options/
           return false
         elsif active_module && active_module.type == 'exploit' && !active_module.is_payload_compatible?(val)
           return false
